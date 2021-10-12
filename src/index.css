@@ -11,3 +11,60 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.App {
+  max-width: 100%;  
+  margin: 30px auto;
+  text-align: center;
+}
+
+nav {
+  padding: 5px;
+}
+
+nav ul {
+  padding: 0;
+}
+
+nav ul li {
+  display: inline-block;
+  margin: 0 10px;
+}
+
+.form-container {
+  border: 0px solid black;
+  height: 200px auto;
+  width: 80%;
+  margin: auto;
+}
+
+.form-table tr td, th {
+  border: 1px solid pink;
+  padding: 0 5px;
+}
+
+.form-table tr td {
+  background-color:lightblue;
+  
+}
+.form-table input {
+  padding: 0px 5px;
+}
+
+.form-icons {
+  float: right;
+  margin: 10px 18% 5px 0;
+  
+}
+
+.form-icons span {
+  margin: 0 5px;
+
+}
+.form-icons span i {
+  color: blue;
+  font-size: 25px;
+}
+.pointer{
+  cursor: pointer;
+}
