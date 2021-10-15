@@ -1,30 +1,31 @@
 import React, { useState, useEffect } from "react";
-import SingleRow from "./SingleRow";
+import { Link } from "react-router-dom";
+import TBody from "./TBody";
 
 function FormDataNew() {
-  const [fakeState,setFakeState] = useState(false);
-  const [table, setTable] = useState(
-    JSON.parse(localStorage.getItem("table")) || []
-  );
+  const [table, setTable] = useState([]);
+  useEffect(() => {
+    if(localStorage.getItem("table")){
+      setTable(JSON.parse(localStorage.getItem("table")));
+    }
+  }, [])
   const updateRowInTable = (data, index) => {
-    console.log("update data", data);
       let tempArr = table;
       tempArr[index] = data;
       setTable([...tempArr]);
       
   };
-  const deleteRowFromTable = (index) => {
+  const deleteRowFromTable = ( index) => {
     if(table.length>1){
-        let tempArr = table;
+        var tempArr = table
         tempArr.splice(index, 1);
-        setTable([...tempArr]);
-        setFakeState(!fakeState);
+        setTable([...tempArr])
     }
   };
-  const editTable=(operation, data = null, index)=>{
+  const editTable=(operation, data, index)=>{
         switch(operation){
             case 'delete':
-                deleteRowFromTable(index)
+                deleteRowFromTable( index)
                 break
             case 'update':
                 updateRowInTable(data, index)
@@ -38,14 +39,15 @@ function FormDataNew() {
   useEffect(() => {
     localStorage.setItem("table", JSON.stringify(table));
   }, [table])
-
  
   return (
     <div>
       <div className="form-icons">
+        <Link to="/invoice">
         <span>
           <i className="fas fa-eye"></i>
         </span>
+        </Link>
         <span>
           <i className="fas fa-plus-circle" onClick={()=>{setTable([...table,{name:'',description:'',quantity:0,price:0}]);}}></i>
         </span>
@@ -54,6 +56,7 @@ function FormDataNew() {
         <table className="form-table">
           <thead>
             <tr>
+              <th>Sr#</th>
               <th>Name</th>
               <th>Description</th>
               <th>Quantity</th>
@@ -62,11 +65,7 @@ function FormDataNew() {
               <th>Action</th>
             </tr>
           </thead>
-          <tbody>
-            {table && table.length
-              ? table.map((row,index) => <SingleRow key={index}  index={index} row={row} editTable={editTable} />)
-              : <tr><td colSpan="6"> "No Data Available</td></tr>}
-          </tbody>
+          <TBody table={table} editTable={editTable} />
         </table>
       </div>
     </div>

@@ -1,5 +1,5 @@
 import { useState,useEffect } from "react";
-const SingleRow = ({row,editTable,index, myCom}) => {
+const SingleRow = ({row,editTable,index}) => {
   const [name, setName] = useState(row.name);
   const [description, setDescription] = useState(row.description);
   const [quantity, setQuantity] = useState(row.quantity);
@@ -10,6 +10,9 @@ const SingleRow = ({row,editTable,index, myCom}) => {
   }, [name,price,quantity,description])
   return (
     <tr>
+      <td>
+        {index + 1}
+      </td>
       <td>
         <input
           type="text"

@@ -3,6 +3,7 @@ import About from "./pages/About";
 import Form from "./pages/Form";
 import Home from "./pages/Home";
 import FormDataNew from "./components/FormDataNew";
+import FormInvoice from "./components/FormInvoice";
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
               <Route path="/about" component={About} />
               <Route path="/form" component={Form} />
               <Route path="/form-new" component={FormDataNew} />
+              <Route path="/invoice" component={FormInvoice} />
              
             </Switch>
           </nav>
