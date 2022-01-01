@@ -13,7 +13,6 @@ function FormDataNew() {
       let tempArr = table;
       tempArr[index] = data;
       setTable([...tempArr]);
-      
   };
   const deleteRowFromTable = ( index) => {
     if(table.length>1){
